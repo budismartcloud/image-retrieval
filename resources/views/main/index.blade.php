@@ -57,9 +57,9 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img id="img4" src="{{asset("public/img/tv.GIF")}}" alt="Gambar" class="card-img-top">
+                        <img id="img4" src="{{asset("public/img/tw.GIF")}}" alt="Gambar" class="card-img-top">
                         <div class="card-body">
-                            <a class="text-center" href="#" onclick="process(230)">Tuvalu</a>
+                            <a class="text-center" href="#" onclick="process(231)">Taiwan</a>
                         </div>
                     </div>
                     <div class="card">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <br>
-                <button class="btn btn-primary" id="process" onclick="process(102)">Test</button>
+                <!-- <button class="btn btn-primary" id="process" onclick="process(102)">Test</button> -->
                 <!-- Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -101,14 +101,15 @@
         url:'api/retrieve',
 		data:'id='+id,
 		beforeSend: function() {
+			$(".modal-body").html("<p>Loading..</p>");
 			$('#exampleModal').modal('toggle');
 		},
         error: function(jqXHR, textStatus, errorThrown) {
         	alert(textStatus + ': ' + errorThrown);
         },
         success: function(result) {
-			console.log(result);
 			$(".modal-body").html("");
+			console.log(result);
 			result.data.forEach(element => {
 				let countryName = getCountryName(element.name.split(".")[0].toUpperCase());
 				console.log(element.name);
